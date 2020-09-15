@@ -2,10 +2,15 @@
 
 # Storyline: Create peer VPN configuration file
 
+# What is the client's name?
 
-# What is the peer's name
-echo -n "What is the peer's name? "
-read the_client
+if [[ $1 == "" ]]
+then
+	echo -n "What is the client's name? "
+	read the_client
+else
+	the_client="$1"
+fi
 
 # Filename variable
 pFile="${the_client}-wg0.conf"
@@ -18,11 +23,11 @@ then
 	echo -n "Do you want to overwrite it? [y|N]"
 	read to_overwrite
 
-	if [[ "{$to_overwrite}" == "N" || "${to_overwrite}" == "" ]]
+	if [[ "${to_overwrite}" == "N" || "${to_overwrite}" == "" || "${to_overwrite}" == "n" ]]
 	then
 		echo "Exit..."
 		exit 0
-	elif [[ "$to_overwrite" == "y" ]]
+	elif [[ "${to_overwrite}" == "y" ]]
 	then
 		echo "Creating the wireguard configuration file..."
 	else
@@ -83,7 +88,6 @@ echo "
 Publickey = ${clientPub}
 PresharedKey = ${pre}
 AllowedIPs = 10.254.132.100/32
-
 # ${the_client} end" | tee -a wg0.conf
 
 # Restart the VPN
