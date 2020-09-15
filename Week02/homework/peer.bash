@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Storyline: Create peer VPN configuration file
+# Storyline: Create the peer VPN configuration file
 
 # What is the client's name?
 
