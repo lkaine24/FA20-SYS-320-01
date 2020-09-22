@@ -2,7 +2,7 @@
 
 # Storyline: Script to add and delete VPN peers
 
-while getopts 'hdau:' OPTION ; do
+while getopts 'hdacu:' OPTION ; do
 
 	case "$OPTION" in
 
@@ -11,6 +11,8 @@ while getopts 'hdau:' OPTION ; do
 		a) u_add=${OPTION}
 		;;
 		u) t_user=${OPTARG}
+		;;
+		c) c_user=${OPTION} 
 		;;
 		h)
 			echo ""
@@ -27,10 +29,10 @@ done
 
 # Check to see if the -a and -d are empty or if they are both specified throw an error
 
-if [[ (${u_del} == "" && ${u_add} == "") || (${u_del} != "" && ${u_add} != "") ]]
+if [[ (${u_del} == "" && ${u_add} == "" && ${c_user} == "") || (${u_del} != "" && ${u_add} != "") ]]
 then
 
-	echo "Please specify -a or -d and the -u and username."
+	echo "Please specify -a or -d or -c and the -u and username."
 
 fi
 
@@ -45,14 +47,27 @@ then
 
 fi
 
+# Add a new switch with an argument that checks to see if the user exists in the wg0.conf file
+
+if [[ ${c_user} ]]
+
+then
+	echo "Checking if this user exists..."
+	if [[ $(grep ${t_user} wg0.conf) ]]
+	then
+        	echo "This user exists"
+	else
+        	echo "This user does not exist"
+	fi
+fi
+
 # Delete a user
 
 if [[ ${u_del} ]] && [[ $(grep ${t_user} wg0.conf) ]]
 then
 	echo "Deleting user..."
 	sed -i "/# ${t_user} begin/,/# ${t_user} end/d" wg0.conf
-else
-	echo "This user does not exist"
+
 fi
 
 # Add a user
