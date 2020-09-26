@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Storyline: Menu for admin, VPN, and Security functions
+# Storyline: Menu for admin, VPN, Blocklist, and Security functions
 
+# Invalid option function
 function invalid_opt(){
 
 	echo ""
@@ -11,6 +12,7 @@ function invalid_opt(){
 
 }
 
+# Main Menu
 function menu() {
 
 	# clears the screen
@@ -23,9 +25,11 @@ function menu() {
 
 	case "$choice" in
 	
+	# Calls admin menu
 	1) admin_menu
 	;;
-
+	
+	# Calls security menu
 	2) security_menu
 	;;
 
@@ -41,6 +45,7 @@ function menu() {
 
 }
 
+# Admin Menu
 function admin_menu() {
 	
 	clear
@@ -69,6 +74,7 @@ function admin_menu() {
 admin_menu
 }
 
+# VPN Menu
 function vpn_menu() {
 	
 	clear
@@ -118,6 +124,7 @@ function vpn_menu() {
 vpn_menu
 }
 
+# Blocklist menu
 function block_list_menu() {
 
 	clear
@@ -154,6 +161,7 @@ function block_list_menu() {
 block_list_menu
 }
 
+# Security Menu
 function security_menu() {
 
         clear
