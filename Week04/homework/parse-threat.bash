@@ -59,7 +59,7 @@ while getopts 'icnwmuh' OPTION ; do
 		# Inbound drop rule for Netscreen
 		for eachIP in $(cat badIPs.txt)
 		do
-			echo "-A INPUT -s ${eachIP} -j REJECT" | tee -a badIPS.netscreen
+			echo "set address untrust Outside_Net ${eachIP}" | tee -a badIPS.netscreen
 		done
 		exit 0
                 ;;
