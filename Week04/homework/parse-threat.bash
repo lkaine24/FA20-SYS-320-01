@@ -81,7 +81,7 @@ while getopts 'icnwmuh' OPTION ; do
 		;;
 		u)
 		# Domain URL block list
-		URLs=$(grep https targetedthreats.csv | cut -d, -f 5 | uniq)
+		URLs=$(grep https targetedthreats.csv | cut -d, -f 2 | uniq)
 		echo "class-map match-any BAD_URLS" | tee badURLS.cisco
 		for eachURL in ${URLs}
 		do
