@@ -123,9 +123,9 @@ Get-FileHash "C:\Users\Lucas Kaine\Desktop\results.zip" | Add-Content "C:\Users\
 # to a CSV file. It was exporting objects such as IPAddress and DefaultGateway as system.string[].
 # This information was not useful for the user because those objects are important in an Incident Response Investigation.
 # After some research, I found that this happened because those objects store values in arrays.
-# After more research, I found a method that solves this problem and I successfully ouputted useful information.
+# After more research, I found a method that solves this problem and I successfully outputted useful information.
 
 # What did I like the most about this assignment and why?
-# I liked creating my own function the most. This helped to solidfy my understanding
+# I liked creating my own function the most. This helped to solidify my understanding
 # of functions in general, and helped me to appreciate just how useful they are. If
 # I wrote this script without that function, it would be a much longer and cluttered script.
