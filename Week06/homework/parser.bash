@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Storyline: Parse given log file then give the user the option to either print the output to the console,
 # save it in a specified file, or create a firewall ruleset.
