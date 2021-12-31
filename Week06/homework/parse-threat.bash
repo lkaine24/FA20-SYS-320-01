@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Storyline: Extract IPs from badIPs.txt and create a firewall ruleset
 
